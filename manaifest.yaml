@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: django-app
-        image: my-django-app:latest
+        image: public.ecr.aws/w0n7y4q3/backend:latest
         ports:
         - containerPort: 8000
 
@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: my-react-app:latest
+        image: public.ecr.aws/w0n7y4q3/frontend:latest
         ports:
         - containerPort: 80
 
@@ -91,7 +91,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: gokart.com
+  - host: gokart.site
     http:
       paths:
       - path: /
