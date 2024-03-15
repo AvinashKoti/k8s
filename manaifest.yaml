@@ -92,7 +92,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: gokart.site
+  - host: gocart.site
     http:
       paths:
       - path: /
