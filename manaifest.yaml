@@ -81,15 +81,16 @@ spec:
     targetPort: 80
 
 ---
-# Ingress
+#ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-ingress
   namespace: gokart
   annotations:
-    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
   - host: gokart.site
     http:
