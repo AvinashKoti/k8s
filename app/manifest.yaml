@@ -24,6 +24,7 @@ spec:
       containers:
       - name: django-app
         image: public.ecr.aws/w0n7y4q3/backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
 
@@ -62,6 +63,7 @@ spec:
       containers:
       - name: react-app
         image: public.ecr.aws/w0n7y4q3/frontend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 
