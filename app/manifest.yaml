@@ -43,44 +43,6 @@ spec:
     port: 8000
     targetPort: 8000
 
----
-# Deployment for React App
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: react-app
-  namespace: gokart
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: react-app
-  template:
-    metadata:
-      labels:
-        app: react-app
-    spec:
-      containers:
-      - name: react-app
-        image: public.ecr.aws/w0n7y4q3/frontend:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-
----
-# Service for React App
-apiVersion: v1
-kind: Service
-metadata:
-  name: react-app
-  namespace: gokart
-spec:
-  selector:
-    app: react-app
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
 
 ---
 #ingress
@@ -90,7 +52,7 @@ metadata:
   name: my-ingress
   namespace: gokart
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    #nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -98,13 +60,6 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: react-app
-            port:
-              number: 80
-      - path: /api
         pathType: Prefix
         backend:
           service:
